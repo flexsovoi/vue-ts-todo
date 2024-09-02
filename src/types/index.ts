@@ -1,10 +1,10 @@
 export interface ITask {
-    id: Date;
-    title: string;
-    level: ITaskLevel;
+  id: string;
+  title: string;
+  level: ITaskLevel;
 }
 export enum ITaskLevel {
-    HIGH = 'High',
-    MID = 'Medium',
-    EASY = 'Easy',
+  HIGH = 'High',
+  MID = 'Medium',
+  EASY = 'Easy',
 }

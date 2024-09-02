@@ -7,7 +7,7 @@
     <div class="task-form__body">
       <input type="text" required name="taskName" />
       <select name="taskLevel">
-        <option :value="level" v-for="level in ITaskLevel">
+        <option :value="level" v-for="level in ITaskLevel" :key="level">
           {{ level }}
         </option>
       </select>
@@ -22,17 +22,17 @@
 </template>
 
 <script setup lang="ts">
-import { ITaskLevel } from '../types';
 import { useTaskStore } from '../store/TaskStore.ts';
+import { ITaskLevel } from '../types';
 
 const taskStore = useTaskStore();
 
-const handleSubmit = (e) => {
-  const formData = new FormData(e.target);
+const handleSubmit = (e: Event) => {
+  const formData = new FormData(e.target as HTMLFormElement);
   taskStore.addTask({
-    title: formData.get('taskName'),
-    level: formData.get('taskLevel'),
-    id: Date.now(),
+    title: formData.get('taskName') as ITaskLevel,
+    level: formData.get('taskLevel') as ITaskLevel,
+    id: Date.now().toString(),
   });
   taskStore.setCreateMode(false);
 };

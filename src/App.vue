@@ -9,13 +9,14 @@
             v-for="type in SORTING_TYPES"
             :value="type"
             :selected="type === taskStore.selectedSort"
+            :key="type"
           >
             {{ type }}
           </option>
         </select>
       </div>
       <transition-group name="todo-list" tag="ul">
-        <task :task :key="task.id" v-for="task in sortingTasks" />
+        <task :task="task" :key="task.id" v-for="task in sortingTasks" />
       </transition-group>
       <task-form />
       <button
@@ -30,12 +31,12 @@
 </template>
 
 <script setup lang="ts">
-import './reset.css';
+import { computed, onMounted } from 'vue';
 import Task from './components/Task.vue';
 import TaskForm from './components/TaskForm.vue';
-import { useTaskStore } from './store/TaskStore.ts';
-import { computed, onMounted } from 'vue';
 import { SORTING_TYPES } from './constants';
+import './reset.css';
+import { useTaskStore } from './store/TaskStore';
 
 const taskStore = useTaskStore();
 const sortingTasks = computed(() => taskStore.getSortedTasks());

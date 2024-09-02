@@ -25,7 +25,6 @@ export const useTaskStore = defineStore('task', () => {
   };
 
   const deleteTask = (id: string | number) => {
-    // Убедитесь, что тип id соответствует вашему интерфейсу ITask
     tasks.value = tasks.value.filter((task) => task.id !== id);
     saveTasks();
   };

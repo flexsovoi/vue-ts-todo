@@ -14,11 +14,11 @@
 </template>
 
 <script lang="ts" setup>
-import { ITask } from '../types';
 import { useTaskStore } from '../store/TaskStore.ts';
+import { ITask } from '../types';
 
 const taskStore = useTaskStore();
-const props = defineProps<{
+defineProps<{
   task: ITask;
 }>();
 </script>
