@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-import { ITask, ITaskLevel } from '../types';
 import { SORTING_TYPES } from '../constants';
+import { ITask, ITaskLevel } from '../types';
 
 export const useTaskStore = defineStore('task', () => {
   const tasks = ref<ITask[]>([]);
@@ -61,5 +61,6 @@ export const useTaskStore = defineStore('task', () => {
     setCreateMode,
     applyTasks,
     selectedSort,
+    saveTasks,
   };
 });

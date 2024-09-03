@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { useTaskStore } from '../store/TaskStore.ts';
+import { useTaskStore } from '../store/TaskStore';
 import { ITaskLevel } from '../types';
 
 const taskStore = useTaskStore();
