@@ -20,9 +20,9 @@
 
 <script lang="ts" setup>
 import { defineProps, ref } from 'vue';
+import { ITask } from '../shared/types';
+import MyInput from '../shared/ui/MyInput.vue';
 import { useTaskStore } from '../store/TaskStore';
-import { ITask } from '../types';
-import MyInput from './ui/MyInput.vue';
 defineProps<{
   task: ITask;
 }>();

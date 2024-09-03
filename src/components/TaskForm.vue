@@ -22,8 +22,8 @@
 </template>
 
 <script setup lang="ts">
+import { ITaskLevel } from '../shared/types';
 import { useTaskStore } from '../store/TaskStore';
-import { ITaskLevel } from '../types';
 
 const taskStore = useTaskStore();
 

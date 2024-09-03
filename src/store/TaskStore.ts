@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-import { SORTING_TYPES } from '../constants';
-import { ITask, ITaskLevel } from '../types';
+import { SORTING_TYPES } from '../shared/constants';
+import { ITask, ITaskLevel } from '../shared/types';
 
 export const useTaskStore = defineStore('task', () => {
   const tasks = ref<ITask[]>([]);
