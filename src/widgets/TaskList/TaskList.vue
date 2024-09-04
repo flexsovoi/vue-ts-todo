@@ -10,7 +10,7 @@
     <task-form />
     <button
       class="plus-btn"
-      v-if="!taskStore.isCreateMode"
+      v-if="!taskStore.isCreateMode && !route.path.includes('completed')"
       @click="taskStore.setCreateMode(true)"
     >
       <img src="/assets/icons/plusIcon.svg" alt="plus" />
