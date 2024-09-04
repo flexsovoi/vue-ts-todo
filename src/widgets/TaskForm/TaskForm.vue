@@ -2,7 +2,7 @@
   <form
     class="task-form"
     @submit.prevent="handleSubmit"
-    v-if="taskStore.isCreate"
+    v-if="taskStore.isCreateMode"
   >
     <div class="task-form__body">
       <input type="text" required name="taskName" />
@@ -22,17 +22,19 @@
 </template>
 
 <script setup lang="ts">
-import { ITaskLevel } from '../shared/types';
-import { useTaskStore } from '../store/TaskStore';
+import { useTaskStore } from '../../entities/task/store/TaskStore';
+import { ITaskLevel } from '../../entities/task/types';
 
 const taskStore = useTaskStore();
 
 const handleSubmit = (e: Event) => {
   const formData = new FormData(e.target as HTMLFormElement);
-  taskStore.addTask({
+  taskStore.createTask({
     title: formData.get('taskName') as ITaskLevel,
     level: formData.get('taskLevel') as ITaskLevel,
     id: Date.now().toString(),
+    userId: 1,
+    completed: false,
   });
   taskStore.setCreateMode(false);
 };

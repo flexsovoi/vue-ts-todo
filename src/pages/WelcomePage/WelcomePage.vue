@@ -22,12 +22,12 @@
 
 <style scoped lang="scss">
 .welcome-page {
-  background: linear-gradient(135deg, #494848 0%, #000000 100%);
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
   color: #fff;
   padding: 40px;
   text-align: center;
-  border-radius: 15px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 
   h2 {
     font-size: 2.5em;

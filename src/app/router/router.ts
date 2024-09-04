@@ -10,7 +10,7 @@ const routes = [
     component: MainLayout,
     children: [
       { path: '', component: TaskPage },
-      { path: '/completed', component: CompletedPage },
+      { path: 'completed', component: CompletedPage },
     ],
   },
 ];

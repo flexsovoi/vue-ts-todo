@@ -1,10 +1,18 @@
 <template>
   <li class="task">
-    <div class="task__title" v-if="!isEditMode">{{ task.title }}</div>
-    <div class="task__edit" v-if="isEditMode">
-      <my-input v-model="task.title" />
-      <button @click="saveChanges">Save</button>
-      <button @click="cancelChanges">Cancel</button>
+    <div class="task__title">
+      <MyCheckbox
+        :checked="task.completed"
+        :click-function="
+          () => taskStore.changeTaskValue(task.id, !task.completed)
+        "
+      />
+      <div v-if="!isEditMode">{{ task.title }}</div>
+      <div class="task__edit" v-if="isEditMode">
+        <my-input v-model="task.title" />
+        <button @click="saveChanges">Save</button>
+        <button @click="cancelChanges">Cancel</button>
+      </div>
     </div>
     <div class="task__options">
       <div class="task__level">{{ task.level }}</div>
@@ -20,9 +28,12 @@
 
 <script lang="ts" setup>
 import { defineProps, ref } from 'vue';
-import { ITask } from '../shared/types';
-import MyInput from '../shared/ui/MyInput.vue';
-import { useTaskStore } from '../store/TaskStore';
+import { useTaskStore } from '../../entities/task/store/TaskStore';
+
+import { ITask } from '../../entities/task/types';
+import MyCheckbox from '../../shared/ui/MyCheckbox.vue';
+import MyInput from '../../shared/ui/MyInput.vue';
+
 defineProps<{
   task: ITask;
 }>();
@@ -52,6 +63,12 @@ const cancelChanges = () => {
   justify-content: space-between;
   border-bottom: 1px solid #fff;
   padding: 15px;
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+  }
   &__options {
     display: flex;
     align-items: center;
