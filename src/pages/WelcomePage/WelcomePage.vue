@@ -14,7 +14,7 @@
       </li>
       <li class="feature-item">Store: Save your progress and other data.</li>
     </ul>
-    <RouterLink class="navigate-button" to="/tasks"> Go to Tasks </RouterLink>
+    <RouterLink class="navigate-button" to="/tasks">Go to Tasks</RouterLink>
   </div>
 </template>
 

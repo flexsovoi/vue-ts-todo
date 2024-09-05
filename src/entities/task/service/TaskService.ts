@@ -2,7 +2,11 @@ import { ITask, ITaskLevel, SORTING_TYPES } from '../types';
 
 class TaskService {
   get() {
-    return localStorage.getItem('tasks');
+    const tasks = localStorage.getItem('tasks');
+    if (tasks) {
+      return JSON.parse(tasks);
+    }
+    return [];
   }
   save(tasks: ITask[]) {
     localStorage.setItem('tasks', JSON.stringify(tasks));

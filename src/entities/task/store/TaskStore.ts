@@ -26,10 +26,9 @@ export const useTaskStore = defineStore('task', () => {
   };
 
   const applyTasks = async () => {
-    const storageTasks = localStorage.getItem('tasks');
-    if (storageTasks) {
-      const parseTasks: ITask[] = JSON.parse(storageTasks);
-      tasks.value = [...parseTasks];
+    const storageTasks: ITask[] = taskService.get();
+    if (storageTasks.length) {
+      tasks.value = [...storageTasks];
     } else {
       const userTasks = await loadTasks();
       tasks.value = [...userTasks];
@@ -38,7 +37,7 @@ export const useTaskStore = defineStore('task', () => {
   };
 
   const saveTasks = () => {
-    localStorage.setItem('tasks', JSON.stringify(tasks.value));
+    taskService.save(tasks.value);
   };
 
   const createTask = (task: ITask) => {
